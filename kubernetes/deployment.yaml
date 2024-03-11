@@ -1,0 +1,24 @@
+# deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-react-app5
+spec:
+  replicas: 2 # 앱 인스턴스 수
+  selector:
+    matchLabels:
+      app: my-react-app5
+  template:
+    metadata:
+      labels:
+        app: my-react-app5
+    spec:
+      containers:
+        - name: my-react-app5
+          image: haha0888/test6:latest
+          imagePullPolicy: Always
+          command: ["npm", "start"]
+          ports:
+            - containerPort: 3000 # 앱이 노출하는 포트
+
